@@ -1,0 +1,32 @@
+// Package structure
+
+/*Example package directory
+package/
+├─ bin/..
+├─ docs/
+│  ├─ ..docs here
+├─ package.json
+*/
+
+{
+    // The name of the package
+    // must not be empty or "packager"
+    "name": "Example Package",
+    // The Version
+    "version": "1.0.0",
+    // The License
+    "license": "Apache-2.0",
+    // The dependencies
+    // done by "dependency": "version
+    "dependencies": {
+        "example": "1.0.0" 
+        
+    },
+    // The bin directory
+    // AKA: this is what gets added to the %PATH%
+    "binDir": "bin",
+    // If multiple bin directories are needed
+    "binDirs": [
+        "bin"
+    ]
+}
