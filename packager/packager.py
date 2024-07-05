@@ -50,14 +50,16 @@ def install(package_name, path=DEFAULT_INSTALL_PATH):
         log.output("ERR: package not found", "RED", 1)
         return
 
+    if not os.path.exists(install_path):
+        #os.makedirs(install_path)
+        log.output("First Install - making paths: " + install_path, "CYAN", 2)
+    
+
     if os.path.exists(install_path + package_name):
         log.output("Package already installed: " + package_name, "YELLOW", 1)
         log.output("ERR: package already installed", "YELLOW", 1)
         return
     
-    if not os.path.exists(install_path):
-        #os.makedirs(install_path)
-        log.output("First Install - making paths: " + install_path, "CYAN", 2)
     if sys.platform == "win32":
         if not windows.is_in_path(install_path):
             #windows.add_to_path(install_path)
@@ -95,6 +97,23 @@ def main():
                     print("ERR: missing package name")
                     return
                 install(sys.argv[2])
-                
+            case "help":
+                print("Commands:")
+                print("  install <package>")
+                print("  uninstall <package>")
+                print("  list")
+                print("  config")
+                print("  help")
+                print("  docs <package>")
+                print("  docs <package> view <file>")
+                print()
+            case "list":
+                install_path = DEFAULT_INSTALL_PATH + "\\packages\\"
+                if not os.path.exists(install_path):
+                    #os.makedirs(install_path)
+                    log.output("You have no packages installed!", "WHITE", 1)
+            case other:
+                log.output("Command not implemented", "YELLOW", 1)
+
 
 main()
