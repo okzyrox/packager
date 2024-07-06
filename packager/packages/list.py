@@ -10,6 +10,7 @@ PACKAGES = {
         "version": "0.0.1",
         "url:": "https://github.com/okzyrox/packager",
         "list_name": "test",
-        "method": "git"
+        "file_name": "test.py",
+        "method": "http"
     }
 }
